@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIEM Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0a0c10;
+  --bg2:      #0f1218;
+  --bg3:      #151a22;
+  --border:   #1e2533;
+  --border2:  #2a3444;
+  --text:     #c8d0dc;
+  --muted:    #5a6478;
+  --accent:   #00d4ff;
+  --critical: #ff3366;
+  --high:     #ff6b35;
+  --medium:   #ffcc00;
+  --low:      #4488ff;
+  --success:  #00e676;
+  --mono:     'JetBrains Mono', monospace;
+  --sans:     'Syne', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Grid lines background ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Layout ── */
+.shell { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Header ── */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--text); font-weight: 400; }
+.header-status {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex; gap: 16px; align-items: center;
+}
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); display: inline-block; margin-right: 4px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── Upload zone ── */
+#upload-zone {
+  padding: 32px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.drop-area {
+  width: 100%;
+  border: 1px dashed var(--border2);
+  border-radius: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+.drop-area:hover, .drop-area.drag-over {
+  border-color: var(--accent);
+  background: rgba(0,212,255,.03);
+}
+.drop-area input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.drop-icon { font-size: 32px; margin-bottom: 12px; color: var(--muted); }
+.drop-label { font-size: 13px; color: var(--muted); }
+.drop-label strong { color: var(--accent); }
+.file-list { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+.file-chip {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 6px;
+}
+.file-chip .rm { cursor: pointer; color: var(--muted); font-size: 14px; line-height:1; }
+.file-chip .rm:hover { color: var(--critical); }
+
+.btn {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 28px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: opacity .15s, transform .1s;
+}
+.btn:hover { opacity: .85; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+.btn-ghost:hover { border-color: var(--accent); }
+
+/* ── Progress ── */
+#progress-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
+  display: none;
+}
+#progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  width: 0%;
+  transition: width .3s;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer { 0%{opacity:.7} 50%{opacity:1} 100%{opacity:.7} }
+
+/* ── Dashboard ── */
+#dashboard { display: none; padding: 24px 0; }
+
+/* Stat cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.stat-card.critical::before { background: var(--critical); }
+.stat-card.high::before     { background: var(--high); }
+.stat-card.medium::before   { background: var(--medium); }
+.stat-card.low::before      { background: var(--low); }
+.stat-card.total::before    { background: var(--accent); }
+.stat-card.events::before   { background: #7c3aed; }
+
+.stat-card:hover { border-color: var(--border2); }
+.stat-num {
+  font-family: var(--sans);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-card.critical .stat-num { color: var(--critical); }
+.stat-card.high .stat-num     { color: var(--high); }
+.stat-card.medium .stat-num   { color: var(--medium); }
+.stat-card.low .stat-num      { color: var(--low); }
+.stat-card.total .stat-num    { color: var(--accent); }
+.stat-card.events .stat-num   { color: #a78bfa; }
+.stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+
+/* Main content grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+}
+
+/* Panel */
+.panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.panel-body { padding: 0; }
+
+/* Alerts table */
+.alerts-filters {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.sev-btn {
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: var(--mono);
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  opacity: .5;
+  transition: opacity .15s;
+}
+.sev-btn.active { opacity: 1; }
+.sev-btn.CRITICAL { color: var(--critical); border-color: var(--critical); }
+.sev-btn.HIGH     { color: var(--high);     border-color: var(--high); }
+.sev-btn.MEDIUM   { color: var(--medium);   border-color: var(--medium); }
+.sev-btn.LOW      { color: var(--low);      border-color: var(--low); }
+.sev-btn.ALL      { color: var(--text);     border-color: var(--border2); }
+
+#alerts-list { max-height: 520px; overflow-y: auto; }
+.alert-row {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+.alert-row:hover { background: var(--bg3); }
+.alert-row:last-child { border-bottom: none; }
+
+.sev-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  letter-spacing: .05em;
+}
+.CRITICAL { background: rgba(255,51,102,.15);  color: var(--critical); }
+.HIGH     { background: rgba(255,107,53,.15);  color: var(--high); }
+.MEDIUM   { background: rgba(255,204,0,.15);   color: var(--medium); }
+.LOW      { background: rgba(68,136,255,.15);  color: var(--low); }
+
+.alert-title { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.3; }
+.alert-meta  { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.alert-ts    { font-size: 10px; color: var(--muted); white-space: nowrap; }
+
+/* Right sidebar panels */
+.sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+/* Top attackers */
+.attacker-row {
+  padding: 8px 16px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+.attacker-row:last-child { border-bottom: none; }
+.attacker-ip { color: var(--accent); font-weight: 500; flex: 1; }
+.score-bar-wrap { width: 60px; height: 4px; background: var(--border); border-radius: 2px; }
+.score-bar { height: 100%; border-radius: 2px; background: var(--high); }
+.score-num { color: var(--muted); min-width: 24px; text-align: right; }
+
+/* MITRE */
+.mitre-row {
+  padding: 7px 16px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+.mitre-row:last-child { border-bottom: none; }
+.mitre-tactic { flex: 1; color: var(--text); }
+.mitre-bar-wrap { width: 50px; height: 3px; background: var(--border); border-radius: 1px; }
+.mitre-bar { height: 100%; border-radius: 1px; background: var(--accent); }
+.mitre-count { color: var(--muted); min-width: 20px; text-align: right; }
+
+/* Timeline (simple text sparkline) */
+#timeline-chart { padding: 12px 16px; font-size: 11px; }
+.tl-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.tl-hour { color: var(--muted); width: 90px; flex-shrink: 0; }
+.tl-bar-wrap { flex: 1; height: 12px; background: var(--border); border-radius: 2px; overflow: hidden; display: flex; }
+.tl-seg { height: 100%; }
+.tl-total { color: var(--muted); width: 30px; text-align: right; }
+
+/* Alert detail modal */
+#modal-bg {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.75);
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+#modal-bg.open { display: flex; }
+#modal {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  width: 620px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; color: var(--muted);
+  font-size: 20px; cursor: pointer; line-height: 1;
+}
+.modal-close:hover { color: var(--text); }
+.modal-sev { font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+.modal-title { font-family: var(--sans); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.modal-desc { color: var(--muted); font-size: 12px; line-height: 1.6; margin-bottom: 16px; }
+.modal-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.modal-field label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+.modal-field value { display: block; font-size: 12px; color: var(--text); margin-top: 2px; }
+.modal-evidence { border-top: 1px solid var(--border); padding-top: 12px; }
+.modal-evidence h4 { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.evidence-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #7cb8e8;
+  margin-bottom: 6px;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+.mitre-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(0,212,255,.08);
+  border: 1px solid rgba(0,212,255,.2);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+/* Exports row */
+.exports-row {
+  display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stats-row { grid-template-columns: repeat(3,1fr); }
+  .content-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header>
+  <div class="logo">SIEM<span>·Analyzer</span></div>
+  <div class="header-status">
+    <span><span class="dot"></span>Live</span>
+    <span id="hdr-time"></span>
+  </div>
+</header>
+
+<!-- Upload zone -->
+<div id="upload-zone">
+  <div class="drop-area" id="drop-area">
+    <input type="file" id="file-input" multiple accept=".log,.txt,.json,.xml,.evtx,.csv">
+    <div class="drop-icon">⬡</div>
+    <div class="drop-label">
+      <strong>Drop log files here</strong> or click to browse<br>
+      <span style="font-size:11px">auth.log · access.log · events.json · Security.xml · custom.log</span>
+    </div>
+  </div>
+  <div class="file-list" id="file-list"></div>
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+  <button class="btn" id="analyze-btn" disabled>▶ Analyze Logs</button>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard">
+  <div class="stats-row">
+    <div class="stat-card events">
+      <div class="stat-num" id="s-events">0</div>
+      <div class="stat-label">Events</div>
+    </div>
+    <div class="stat-card total">
+      <div class="stat-num" id="s-total">0</div>
+      <div class="stat-label">Alerts</div>
+    </div>
+    <div class="stat-card critical">
+      <div class="stat-num" id="s-critical">0</div>
+      <div class="stat-label">Critical</div>
+    </div>
+    <div class="stat-card high">
+      <div class="stat-num" id="s-high">0</div>
+      <div class="stat-label">High</div>
+    </div>
+    <div class="stat-card medium">
+      <div class="stat-num" id="s-medium">0</div>
+      <div class="stat-label">Medium</div>
+    </div>
+    <div class="stat-card low">
+      <div class="stat-num" id="s-low">0</div>
+      <div class="stat-label">Low</div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div>
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Alerts</span>
+          <span id="alert-count" style="font-size:11px;color:var(--muted)"></span>
+        </div>
+        <div class="alerts-filters">
+          <button class="sev-btn ALL active"      onclick="filterAlerts('ALL')">All</button>
+          <button class="sev-btn CRITICAL"        onclick="filterAlerts('CRITICAL')">Critical</button>
+          <button class="sev-btn HIGH"            onclick="filterAlerts('HIGH')">High</button>
+          <button class="sev-btn MEDIUM"          onclick="filterAlerts('MEDIUM')">Medium</button>
+          <button class="sev-btn LOW"             onclick="filterAlerts('LOW')">Low</button>
+        </div>
+        <div id="alerts-list"></div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="panel" style="margin-top:16px">
+        <div class="panel-header"><span class="panel-title">Alert Timeline</span></div>
+        <div id="timeline-chart"></div>
+      </div>
+
+      <div class="exports-row">
+        <button class="btn-ghost" onclick="window.location='/export/json'">⬇ JSON Report</button>
+        <button class="btn-ghost" onclick="window.location='/export/csv'">⬇ CSV Report</button>
+        <button class="btn-ghost" onclick="resetAll()">↺ New Analysis</button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Top Threat Sources</span></div>
+        <div class="panel-body" id="top-attackers"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">MITRE ATT&CK</span></div>
+        <div class="panel-body" id="mitre-panel"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alert detail modal -->
+<div id="modal-bg" onclick="closeModal(event)">
+  <div id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+</div><!-- /shell -->
+
+<script>
+let allAlerts = [], currentFilter = 'ALL';
+
+// Clock
+setInterval(() => {
+  document.getElementById('hdr-time').textContent = new Date().toLocaleTimeString();
+}, 1000);
+
+// Drag and drop
+const dropArea  = document.getElementById('drop-area');
+const fileInput = document.getElementById('file-input');
+const analyzeBtn = document.getElementById('analyze-btn');
+let uploadedFiles = [];
+
+['dragenter','dragover'].forEach(e => dropArea.addEventListener(e, ev => {
+  ev.preventDefault(); dropArea.classList.add('drag-over');
+}));
+['dragleave','drop'].forEach(e => dropArea.addEventListener(e, ev => {
+  ev.preventDefault(); dropArea.classList.remove('drag-over');
+}));
+dropArea.addEventListener('drop', ev => handleFiles(ev.dataTransfer.files));
+fileInput.addEventListener('change', ev => handleFiles(ev.target.files));
+
+function handleFiles(files) {
+  const fd = new FormData();
+  let count = 0;
+  for (const f of files) {
+    fd.append('files', f);
+    count++;
+  }
+  if (!count) return;
+
+  fetch('/upload', { method: 'POST', body: fd })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        uploadedFiles = data.files;
+        renderFileChips();
+        analyzeBtn.disabled = false;
+      }
+    });
+}
+
+function renderFileChips() {
+  const list = document.getElementById('file-list');
+  list.innerHTML = uploadedFiles.map((f,i) =>
+    `<div class="file-chip">
+      <span>📄 ${f}</span>
+      <span class="rm" onclick="removeFile(${i})">×</span>
+    </div>`
+  ).join('');
+}
+
+function removeFile(i) {
+  uploadedFiles.splice(i, 1);
+  renderFileChips();
+  if (!uploadedFiles.length) analyzeBtn.disabled = true;
+}
+
+// Analyze
+analyzeBtn.addEventListener('click', async () => {
+  analyzeBtn.disabled = true;
+  analyzeBtn.textContent = '⟳ Analyzing...';
+
+  const pb = document.getElementById('progress-bar');
+  const pf = document.getElementById('progress-fill');
+  pb.style.display = 'block';
+
+  // Animated progress
+  let prog = 0;
+  const tick = setInterval(() => {
+    prog = Math.min(prog + Math.random() * 8, 90);
+    pf.style.width = prog + '%';
+  }, 200);
+
+  await fetch('/analyze', { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({}) });
+
+  // Poll for completion
+  const poll = setInterval(async () => {
+    const s = await fetch('/status').then(r => r.json());
+    if (!s.analyzing && s.ready) {
+      clearInterval(poll);
+      clearInterval(tick);
+      pf.style.width = '100%';
+      setTimeout(() => {
+        pb.style.display = 'none';
+        loadResults();
+      }, 400);
+    } else if (s.error) {
+      clearInterval(poll);
+      clearInterval(tick);
+      pb.style.display = 'none';
+      analyzeBtn.textContent = '⚠ Error — retry';
+      analyzeBtn.disabled = false;
+    }
+  }, 800);
+});
+
+async function loadResults() {
+  const data = await fetch('/results').then(r => r.json());
+
+  // Stats
+  const s = data.summary;
+  document.getElementById('s-events').textContent   = s.event_count.toLocaleString();
+  document.getElementById('s-total').textContent    = s.total;
+  document.getElementById('s-critical').textContent = s.critical;
+  document.getElementById('s-high').textContent     = s.high;
+  document.getElementById('s-medium').textContent   = s.medium;
+  document.getElementById('s-low').textContent      = s.low;
+
+  allAlerts = data.alerts;
+  renderAlerts('ALL');
+  renderAttackers(data.top_attackers);
+  renderMitre(data.mitre);
+  renderTimeline(data.timeline);
+
+  document.getElementById('upload-zone').style.display = 'none';
+  document.getElementById('dashboard').style.display   = 'block';
+}
+
+function filterAlerts(sev) {
+  currentFilter = sev;
+  document.querySelectorAll('.sev-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === sev || (sev === 'ALL' && b.classList.contains('ALL')));
+  });
+  renderAlerts(sev);
+}
+
+function renderAlerts(sev) {
+  const filtered = sev === 'ALL' ? allAlerts : allAlerts.filter(a => a.severity === sev);
+  document.getElementById('alert-count').textContent = `${filtered.length} shown`;
+
+  document.getElementById('alerts-list').innerHTML = filtered.map((a, i) => `
+    <div class="alert-row" onclick="showModal(${i}, '${sev}')">
+      <span class="sev-badge ${a.severity}">${a.severity}</span>
+      <div>
+        <div class="alert-title">${esc(a.title)}</div>
+        <div class="alert-meta">${a.detector} · ${a.source_ip || ''} ${a.user ? '· ' + a.user : ''} ${a.mitre_id ? '· ' + a.mitre_id : ''}</div>
+      </div>
+      <div class="alert-ts">${a.timestamp.split('T')[1]?.slice(0,8) || ''}</div>
+    </div>
+  `).join('');
+}
+
+function renderAttackers(top) {
+  const maxScore = top[0]?.score || 1;
+  document.getElementById('top-attackers').innerHTML = top.map(t => `
+    <div class="attacker-row">
+      <span class="attacker-ip">${t.ip}</span>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:${(t.score/maxScore*100).toFixed(0)}%"></div></div>
+      <span class="score-num">${t.score}</span>
+    </div>
+  `).join('');
+}
+
+function renderMitre(mitre) {
+  const entries = Object.entries(mitre);
+  const max = entries[0]?.[1] || 1;
+  document.getElementById('mitre-panel').innerHTML = entries.map(([tactic, count]) => `
+    <div class="mitre-row">
+      <span class="mitre-tactic">${tactic}</span>
+      <div class="mitre-bar-wrap"><div class="mitre-bar" style="width:${(count/max*100).toFixed(0)}%"></div></div>
+      <span class="mitre-count">${count}</span>
+    </div>
+  `).join('');
+}
+
+function renderTimeline(tl) {
+  if (!tl.length) return;
+  const maxTotal = Math.max(...tl.map(t => t.total), 1);
+  document.getElementById('timeline-chart').innerHTML = tl.map(t => {
+    const w = (t.total / maxTotal * 100).toFixed(0);
+    const wc = (t.critical / t.total * 100).toFixed(0);
+    const wh = (t.high / t.total * 100).toFixed(0);
+    const wm = (t.medium / t.total * 100).toFixed(0);
+    const wl = (100 - +wc - +wh - +wm).toFixed(0);
+    return `
+      <div class="tl-row">
+        <span class="tl-hour">${t.hour.slice(11)}</span>
+        <div class="tl-bar-wrap" style="opacity:${0.4 + t.total/maxTotal*0.6}">
+          <div class="tl-seg" style="width:${wc}%;background:var(--critical)"></div>
+          <div class="tl-seg" style="width:${wh}%;background:var(--high)"></div>
+          <div class="tl-seg" style="width:${wm}%;background:var(--medium)"></div>
+          <div class="tl-seg" style="width:${wl}%;background:var(--low)"></div>
+        </div>
+        <span class="tl-total">${t.total}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function showModal(idx, sev) {
+  const filtered = sev === 'ALL' ? allAlerts : allAlerts.filter(a => a.severity === sev);
+  const a = filtered[idx];
+  if (!a) return;
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-sev ${a.severity} sev-badge" style="margin-bottom:10px">${a.severity}</div>
+    <div class="modal-title">${esc(a.title)}</div>
+    <div class="modal-desc">${esc(a.description)}</div>
+    <div class="modal-fields">
+      <div class="modal-field"><label>Detector</label><value>${a.detector}</value></div>
+      <div class="modal-field"><label>Alert ID</label><value style="color:var(--muted)">${a.alert_id}</value></div>
+      <div class="modal-field"><label>Source IP</label><value>${a.source_ip || '—'}</value></div>
+      <div class="modal-field"><label>User</label><value>${a.user || '—'}</value></div>
+      <div class="modal-field"><label>Events</label><value>${a.event_count}</value></div>
+      <div class="modal-field"><label>Timestamp</label><value>${a.timestamp?.replace('T',' ').slice(0,19)}</value></div>
+    </div>
+    ${a.mitre_id ? `<div class="mitre-tag">🛡 ${a.mitre_id} — ${a.mitre_tactic}</div>` : ''}
+    ${a.evidence?.length ? `
+      <div class="modal-evidence" style="margin-top:16px">
+        <h4>Evidence</h4>
+        ${a.evidence.map(e => `<div class="evidence-item">${esc(String(e))}</div>`).join('')}
+      </div>` : ''}
+  `;
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function closeModal(ev) {
+  if (!ev || ev.target === document.getElementById('modal-bg') || ev.currentTarget?.classList?.contains('modal-close')) {
+    document.getElementById('modal-bg').classList.remove('open');
+  }
+}
+
+function resetAll() {
+  document.getElementById('upload-zone').style.display = 'flex';
+  document.getElementById('dashboard').style.display   = 'none';
+  analyzeBtn.textContent = '▶ Analyze Logs';
+  analyzeBtn.disabled = true;
+  uploadedFiles = [];
+  document.getElementById('file-list').innerHTML = '';
+}
+
+function esc(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

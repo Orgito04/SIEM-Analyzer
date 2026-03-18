@@ -1,0 +1,58 @@
+alert_id,detector,severity,title,source_ip,user,timestamp,event_count,mitre_tactic,mitre_id,description
+1f71f782,BruteForce,CRITICAL,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:04:05+00:00,50,Credential Access,T1110.001,50 failed auth attempts in 5 min targeting 5 user(s).
+f8e50ace,BruteForce,CRITICAL,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:04:30+00:00,55,Credential Access,T1110.001,55 failed auth attempts in 5 min targeting 5 user(s).
+b051bdc3,BruteForce,CRITICAL,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:04:55+00:00,60,Credential Access,T1110.001,60 failed auth attempts in 5 min targeting 5 user(s).
+c48df7c6,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:16:40+00:00,1,Initial Access,T1190,Request to '/admin' contains patterns associated with exploitation.
+84d00367,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:17:20+00:00,1,Initial Access,T1190,Request to '/wp-login.php' contains patterns associated with exploitation.
+f4da3910,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:17:40+00:00,1,Initial Access,T1190,Request to '/.env' contains patterns associated with exploitation.
+44b69dd4,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:18:00+00:00,1,Initial Access,T1190,Request to '/.git/config' contains patterns associated with exploitation.
+672be704,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:18:20+00:00,1,Initial Access,T1190,Request to '/phpmyadmin' contains patterns associated with exploitation.
+61c652da,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:18:40+00:00,1,Initial Access,T1190,Request to '/cgi-bin/test.cgi' contains patterns associated with exploitation.
+41214f4f,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:19:00+00:00,1,Initial Access,T1190,Request to '/etc/passwd' contains patterns associated with exploitation.
+63edf24f,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:19:20+00:00,1,Initial Access,T1190,Request to '/admin/login' contains patterns associated with exploitation.
+fb26b03c,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:20:00+00:00,1,Initial Access,T1190,Request to '/config.php.bak' contains patterns associated with exploitation.
+93327b22,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:20:20+00:00,1,Initial Access,T1190,Request to '/.htaccess' contains patterns associated with exploitation.
+5779ec91,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:20:40+00:00,1,Initial Access,T1190,Request to '/api/admin' contains patterns associated with exploitation.
+0d092b4b,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:21:40+00:00,1,Initial Access,T1190,Request to '/xmlrpc.php' contains patterns associated with exploitation.
+46116449,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:22:00+00:00,1,Initial Access,T1190,Request to '/wp-config.php' contains patterns associated with exploitation.
+d0eeb3f2,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:22:20+00:00,1,Initial Access,T1190,Request to '/shell.php' contains patterns associated with exploitation.
+9f929ff8,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:22:40+00:00,1,Initial Access,T1190,Request to '/c99.php' contains patterns associated with exploitation.
+6055d18d,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:23:00+00:00,1,Initial Access,T1190,Request to '/r57.php' contains patterns associated with exploitation.
+d93f44e7,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:24:40+00:00,1,Initial Access,T1190,Request to '/info.php' contains patterns associated with exploitation.
+81e86e23,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:25:00+00:00,1,Initial Access,T1190,Request to '/admin/config' contains patterns associated with exploitation.
+501faa86,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:25:40+00:00,1,Initial Access,T1190,Request to '/test.php' contains patterns associated with exploitation.
+dbdff876,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:26:00+00:00,1,Initial Access,T1190,Request to '/index.php.bak' contains patterns associated with exploitation.
+26d24813,Anomaly,HIGH,Web scanning detected from 45.142.212.100,45.142.212.100,,2024-03-15T00:26:20+00:00,30,Discovery,T1595.003,45.142.212.100 has requested 30 distinct paths (error rate: 40%). Consistent with automated scanning.
+3bad3f0a,Anomaly,HIGH,Suspicious path requested by 45.142.212.100,45.142.212.100,,2024-03-15T00:28:20+00:00,1,Initial Access,T1190,Request to '/administrator/' contains patterns associated with exploitation.
+cb982175,Anomaly,HIGH,Web scanning detected from 45.142.212.100,45.142.212.100,,2024-03-15T00:29:40+00:00,40,Discovery,T1595.003,45.142.212.100 has requested 40 distinct paths (error rate: 38%). Consistent with automated scanning.
+07a45b6f,Anomaly,HIGH,Suspicious path requested by 91.108.4.200,91.108.4.200,,2024-03-15T01:23:20+00:00,1,Initial Access,T1190,Request to '/login?user=admin'--&pass=x' contains patterns associated with exploitation.
+ed9bb954,BruteForce,HIGH,Web login brute force from 77.83.247.10,77.83.247.10,,2024-03-15T02:50:34+00:00,40,Credential Access,T1110.001,40 failed POST requests in 5 min.
+6cbb799e,BruteForce,HIGH,Web login brute force from 77.83.247.10,77.83.247.10,,2024-03-15T02:51:34+00:00,50,Credential Access,T1110.001,50 failed POST requests in 5 min.
+fc0dcf4c,BruteForce,HIGH,Password spray from 192.168.1.100,192.168.1.100,,2026-03-15T00:00:25+00:00,5,Credential Access,T1110.003,Single IP targeting 5 distinct users — pattern consistent with password spray attack.
+6f77f111,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:01:35+00:00,20,Credential Access,T1110.001,20 failed auth attempts in 5 min targeting 5 user(s).
+08303807,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:02:00+00:00,25,Credential Access,T1110.001,25 failed auth attempts in 5 min targeting 5 user(s).
+9dfe0c23,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:02:25+00:00,30,Credential Access,T1110.001,30 failed auth attempts in 5 min targeting 5 user(s).
+c1449810,BruteForce,HIGH,SSH brute force from 10.0.0.55,10.0.0.55,root,2026-03-15T00:02:42+00:00,20,Credential Access,T1110.001,20 failed auth attempts in 5 min targeting 1 user(s).
+19ccc6aa,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:02:50+00:00,35,Credential Access,T1110.001,35 failed auth attempts in 5 min targeting 5 user(s).
+142cbb9b,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:03:15+00:00,40,Credential Access,T1110.001,40 failed auth attempts in 5 min targeting 5 user(s).
+a306637a,BruteForce,HIGH,SSH brute force from 10.0.0.55,10.0.0.55,root,2026-03-15T00:03:22+00:00,25,Credential Access,T1110.001,25 failed auth attempts in 5 min targeting 1 user(s).
+1af7e203,BruteForce,HIGH,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:03:40+00:00,45,Credential Access,T1110.001,45 failed auth attempts in 5 min targeting 5 user(s).
+8171a667,BruteForce,HIGH,Password spray from 185.220.101.5,185.220.101.5,,2026-03-15T02:02:00+00:00,5,Credential Access,T1110.003,Single IP targeting 5 distinct users — pattern consistent with password spray attack.
+240b30a3,PrivEsc,HIGH,Dangerous sudo command by 'ubuntu',,ubuntu,2026-03-15T06:00:30+00:00,1,Privilege Escalation,T1548.003,User 'ubuntu' ran '/bin/bash' as root via sudo. This command can be abused for shell escape or data access.
+fca05d67,PrivEsc,HIGH,Dangerous sudo command by 'ubuntu',,ubuntu,2026-03-15T06:00:45+00:00,1,Privilege Escalation,T1548.003,User 'ubuntu' ran '/etc/shadow' as root via sudo. This command can be abused for shell escape or data access.
+5e6a8ea2,PrivEsc,HIGH,Dangerous sudo command by 'ubuntu',,ubuntu,2026-03-15T06:01:00+00:00,1,Privilege Escalation,T1548.003,User 'ubuntu' ran '/usr/bin/nmap' as root via sudo. This command can be abused for shell escape or data access.
+ce3ac0c4,PrivEsc,HIGH,User 'ubuntu' switched to root (su),,ubuntu,2026-03-15T06:01:30+00:00,1,Privilege Escalation,T1548,Direct root shell obtained via su. Occurrence #1.
+a2ca2134,Anomaly,MEDIUM,Multiple user-agents from 45.142.212.100,45.142.212.100,,2024-03-15T00:22:00+00:00,5,Defense Evasion,T1036,5 distinct user-agents from single IP — possible tool rotation or bot activity.
+55fa4b0e,BruteForce,MEDIUM,Web login brute force from 77.83.247.10,77.83.247.10,,2024-03-15T02:47:34+00:00,10,Credential Access,T1110.001,10 failed POST requests in 5 min.
+25ee9a3e,BruteForce,MEDIUM,Web login brute force from 77.83.247.10,77.83.247.10,,2024-03-15T02:48:34+00:00,20,Credential Access,T1110.001,20 failed POST requests in 5 min.
+2f1dba08,Anomaly,MEDIUM,High error rate from 77.83.247.10,77.83.247.10,,2024-03-15T02:48:34+00:00,20,Discovery,T1595,100% of requests from 77.83.247.10 returned errors (20/20).
+d54135de,BruteForce,MEDIUM,Web login brute force from 77.83.247.10,77.83.247.10,,2024-03-15T02:49:34+00:00,30,Credential Access,T1110.001,30 failed POST requests in 5 min.
+f33089eb,BruteForce,MEDIUM,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:00:20+00:00,5,Credential Access,T1110.001,5 failed auth attempts in 5 min targeting 4 user(s).
+26d973a5,BruteForce,MEDIUM,SSH brute force from 10.0.0.55,10.0.0.55,root,2026-03-15T00:00:42+00:00,5,Credential Access,T1110.001,5 failed auth attempts in 5 min targeting 1 user(s).
+20271ae9,BruteForce,MEDIUM,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:00:45+00:00,10,Credential Access,T1110.001,10 failed auth attempts in 5 min targeting 5 user(s).
+53070f67,BruteForce,MEDIUM,SSH brute force from 192.168.1.100,192.168.1.100,,2026-03-15T00:01:10+00:00,15,Credential Access,T1110.001,15 failed auth attempts in 5 min targeting 5 user(s).
+4c7af9ad,BruteForce,MEDIUM,SSH brute force from 10.0.0.55,10.0.0.55,root,2026-03-15T00:01:22+00:00,10,Credential Access,T1110.001,10 failed auth attempts in 5 min targeting 1 user(s).
+0ad3d4dc,BruteForce,MEDIUM,SSH brute force from 10.0.0.55,10.0.0.55,root,2026-03-15T00:02:02+00:00,15,Credential Access,T1110.001,15 failed auth attempts in 5 min targeting 1 user(s).
+7faa0a4c,BruteForce,MEDIUM,SSH brute force from 185.220.101.5,185.220.101.5,,2026-03-15T02:02:00+00:00,5,Credential Access,T1110.001,5 failed auth attempts in 5 min targeting 5 user(s).
+f22d7b35,PrivEsc,MEDIUM,High sudo frequency for 'ubuntu',,ubuntu,2026-03-15T08:06:00+00:00,10,Privilege Escalation,T1548.003,'ubuntu' has run 10 sudo-as-root commands.
+318be115,Anomaly,LOW,Off-hours login by 'ubuntu',203.0.113.42,ubuntu,2026-03-15T03:00:00+00:00,1,Initial Access,T1078,Successful login at 03:00 (outside 07:00–20:00).

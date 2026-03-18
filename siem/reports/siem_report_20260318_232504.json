@@ -1,0 +1,1233 @@
+{
+  "generated_at": "2026-03-18T23:25:04.708417",
+  "summary": {
+    "total": 57,
+    "by_severity": {
+      "MEDIUM": 13,
+      "HIGH": 40,
+      "CRITICAL": 3,
+      "LOW": 1
+    },
+    "by_detector": {
+      "BruteForce": 25,
+      "PrivEsc": 5,
+      "Anomaly": 27
+    },
+    "unique_ips": 7,
+    "unique_users": 2,
+    "critical": 3,
+    "high": 40,
+    "medium": 13,
+    "low": 1
+  },
+  "top_attackers": [
+    {
+      "ip": "45.142.212.100",
+      "score": 71,
+      "alerts": [
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "MEDIUM",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH"
+      ]
+    },
+    {
+      "ip": "192.168.1.100",
+      "score": 39,
+      "alerts": [
+        "MEDIUM",
+        "HIGH",
+        "MEDIUM",
+        "MEDIUM",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "CRITICAL",
+        "CRITICAL",
+        "CRITICAL"
+      ]
+    },
+    {
+      "ip": "77.83.247.10",
+      "score": 14,
+      "alerts": [
+        "MEDIUM",
+        "MEDIUM",
+        "MEDIUM",
+        "HIGH",
+        "HIGH",
+        "MEDIUM"
+      ]
+    },
+    {
+      "ip": "10.0.0.55",
+      "score": 12,
+      "alerts": [
+        "MEDIUM",
+        "MEDIUM",
+        "MEDIUM",
+        "HIGH",
+        "HIGH"
+      ]
+    },
+    {
+      "ip": "185.220.101.5",
+      "score": 5,
+      "alerts": [
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    {
+      "ip": "91.108.4.200",
+      "score": 3,
+      "alerts": [
+        "HIGH"
+      ]
+    },
+    {
+      "ip": "203.0.113.42",
+      "score": 1,
+      "alerts": [
+        "LOW"
+      ]
+    }
+  ],
+  "mitre_coverage": {
+    "Credential Access": 25,
+    "Initial Access": 23,
+    "Privilege Escalation": 5,
+    "Discovery": 3,
+    "Defense Evasion": 1
+  },
+  "alerts": [
+    {
+      "alert_id": "1f71f782",
+      "detector": "BruteForce",
+      "severity": "CRITICAL",
+      "hex_color": "#dc2626",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "50 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:04:05+00:00",
+      "event_count": 50,
+      "evidence": [
+        "admin",
+        "root",
+        "admin",
+        "ubuntu",
+        "deploy"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "f8e50ace",
+      "detector": "BruteForce",
+      "severity": "CRITICAL",
+      "hex_color": "#dc2626",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "55 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:04:30+00:00",
+      "event_count": 55,
+      "evidence": [
+        "admin",
+        "pi",
+        "root",
+        "pi",
+        "pi"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "b051bdc3",
+      "detector": "BruteForce",
+      "severity": "CRITICAL",
+      "hex_color": "#dc2626",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "60 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:04:55+00:00",
+      "event_count": 60,
+      "evidence": [
+        "pi",
+        "ubuntu",
+        "pi",
+        "deploy",
+        "pi"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "c48df7c6",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/admin' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:16:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/admin",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "84d00367",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/wp-login.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:17:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/wp-login.php",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "f4da3910",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/.env' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:17:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/.env",
+        "nmap scripting engine"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "44b69dd4",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/.git/config' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:18:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/.git/config",
+        "sqlmap/1.7"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "672be704",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/phpmyadmin' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:18:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/phpmyadmin",
+        "nmap scripting engine"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "61c652da",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/cgi-bin/test.cgi' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:18:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/cgi-bin/test.cgi",
+        "sqlmap/1.7"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "41214f4f",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/etc/passwd' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:19:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/etc/passwd",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "63edf24f",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/admin/login' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:19:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/admin/login",
+        "sqlmap/1.7"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "fb26b03c",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/config.php.bak' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:20:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/config.php.bak",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "93327b22",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/.htaccess' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:20:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/.htaccess",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "5779ec91",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/api/admin' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:20:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/api/admin",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "0d092b4b",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/xmlrpc.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:21:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/xmlrpc.php",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "46116449",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/wp-config.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:22:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/wp-config.php",
+        "Nikto/2.1.6"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "d0eeb3f2",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/shell.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:22:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/shell.php",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "9f929ff8",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/c99.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:22:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/c99.php",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "6055d18d",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/r57.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:23:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/r57.php",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "d93f44e7",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/info.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:24:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/info.php",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "81e86e23",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/admin/config' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:25:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/admin/config",
+        "Nikto/2.1.6"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "501faa86",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/test.php' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:25:40+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/test.php",
+        "Nikto/2.1.6"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "dbdff876",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/index.php.bak' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:26:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/index.php.bak",
+        "Mozilla/5.0 (compatible; Googlebot/2.1)"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "26d24813",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Web scanning detected from 45.142.212.100",
+      "description": "45.142.212.100 has requested 30 distinct paths (error rate: 40%). Consistent with automated scanning.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:26:20+00:00",
+      "event_count": 30,
+      "evidence": [
+        "/wp-config.php",
+        "/login",
+        "/wp-admin",
+        "/test.php",
+        "/xmlrpc.php"
+      ],
+      "mitre_tactic": "Discovery",
+      "mitre_id": "T1595.003"
+    },
+    {
+      "alert_id": "3bad3f0a",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 45.142.212.100",
+      "description": "Request to '/administrator/' contains patterns associated with exploitation.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:28:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/administrator/",
+        "nmap scripting engine"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "cb982175",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Web scanning detected from 45.142.212.100",
+      "description": "45.142.212.100 has requested 40 distinct paths (error rate: 38%). Consistent with automated scanning.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:29:40+00:00",
+      "event_count": 40,
+      "evidence": [
+        "/wp-config.php",
+        "/login",
+        "/wp-admin",
+        "/test.php",
+        "/xmlrpc.php"
+      ],
+      "mitre_tactic": "Discovery",
+      "mitre_id": "T1595.003"
+    },
+    {
+      "alert_id": "07a45b6f",
+      "detector": "Anomaly",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Suspicious path requested by 91.108.4.200",
+      "description": "Request to '/login?user=admin'--&pass=x' contains patterns associated with exploitation.",
+      "source_ip": "91.108.4.200",
+      "user": null,
+      "timestamp": "2024-03-15T01:23:20+00:00",
+      "event_count": 1,
+      "evidence": [
+        "/login?user=admin'--&pass=x",
+        "sqlmap/1.7"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1190"
+    },
+    {
+      "alert_id": "ed9bb954",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Web login brute force from 77.83.247.10",
+      "description": "40 failed POST requests in 5 min.",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:50:34+00:00",
+      "event_count": 40,
+      "evidence": [
+        "/login",
+        "/login",
+        "/login",
+        "/login",
+        "/login"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "6cbb799e",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Web login brute force from 77.83.247.10",
+      "description": "50 failed POST requests in 5 min.",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:51:34+00:00",
+      "event_count": 50,
+      "evidence": [
+        "/login",
+        "/login",
+        "/login",
+        "/login",
+        "/login"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "fc0dcf4c",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Password spray from 192.168.1.100",
+      "description": "Single IP targeting 5 distinct users \u2014 pattern consistent with password spray attack.",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:00:25+00:00",
+      "event_count": 5,
+      "evidence": [
+        "deploy",
+        "admin",
+        "root",
+        "ubuntu",
+        "pi"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.003"
+    },
+    {
+      "alert_id": "6f77f111",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "20 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:01:35+00:00",
+      "event_count": 20,
+      "evidence": [
+        "pi",
+        "deploy",
+        "pi",
+        "root",
+        "ubuntu"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "08303807",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "25 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:02:00+00:00",
+      "event_count": 25,
+      "evidence": [
+        "deploy",
+        "admin",
+        "deploy",
+        "pi",
+        "admin"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "9dfe0c23",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "30 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:02:25+00:00",
+      "event_count": 30,
+      "evidence": [
+        "admin",
+        "deploy",
+        "ubuntu",
+        "root",
+        "admin"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "c1449810",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 10.0.0.55",
+      "description": "20 failed auth attempts in 5 min targeting 1 user(s).",
+      "source_ip": "10.0.0.55",
+      "user": "root",
+      "timestamp": "2026-03-15T00:02:42+00:00",
+      "event_count": 20,
+      "evidence": [
+        "root",
+        "root",
+        "root",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "19ccc6aa",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "35 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:02:50+00:00",
+      "event_count": 35,
+      "evidence": [
+        "admin",
+        "deploy",
+        "root",
+        "admin",
+        "ubuntu"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "142cbb9b",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "40 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:03:15+00:00",
+      "event_count": 40,
+      "evidence": [
+        "root",
+        "pi",
+        "admin",
+        "pi",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "a306637a",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 10.0.0.55",
+      "description": "25 failed auth attempts in 5 min targeting 1 user(s).",
+      "source_ip": "10.0.0.55",
+      "user": "root",
+      "timestamp": "2026-03-15T00:03:22+00:00",
+      "event_count": 25,
+      "evidence": [
+        "root",
+        "root",
+        "root",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "1af7e203",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "45 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:03:40+00:00",
+      "event_count": 45,
+      "evidence": [
+        "admin",
+        "root",
+        "ubuntu",
+        "root",
+        "deploy"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "8171a667",
+      "detector": "BruteForce",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Password spray from 185.220.101.5",
+      "description": "Single IP targeting 5 distinct users \u2014 pattern consistent with password spray attack.",
+      "source_ip": "185.220.101.5",
+      "user": null,
+      "timestamp": "2026-03-15T02:02:00+00:00",
+      "event_count": 5,
+      "evidence": [
+        "bob",
+        "diana",
+        "alice",
+        "eve",
+        "charlie"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.003"
+    },
+    {
+      "alert_id": "240b30a3",
+      "detector": "PrivEsc",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Dangerous sudo command by 'ubuntu'",
+      "description": "User 'ubuntu' ran '/bin/bash' as root via sudo. This command can be abused for shell escape or data access.",
+      "source_ip": null,
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T06:00:30+00:00",
+      "event_count": 1,
+      "evidence": [
+        "sudo -u root /bin/bash"
+      ],
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_id": "T1548.003"
+    },
+    {
+      "alert_id": "fca05d67",
+      "detector": "PrivEsc",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Dangerous sudo command by 'ubuntu'",
+      "description": "User 'ubuntu' ran '/etc/shadow' as root via sudo. This command can be abused for shell escape or data access.",
+      "source_ip": null,
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T06:00:45+00:00",
+      "event_count": 1,
+      "evidence": [
+        "sudo -u root /etc/shadow"
+      ],
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_id": "T1548.003"
+    },
+    {
+      "alert_id": "5e6a8ea2",
+      "detector": "PrivEsc",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "Dangerous sudo command by 'ubuntu'",
+      "description": "User 'ubuntu' ran '/usr/bin/nmap' as root via sudo. This command can be abused for shell escape or data access.",
+      "source_ip": null,
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T06:01:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "sudo -u root /usr/bin/nmap -sV 10.0.0.0/8"
+      ],
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_id": "T1548.003"
+    },
+    {
+      "alert_id": "ce3ac0c4",
+      "detector": "PrivEsc",
+      "severity": "HIGH",
+      "hex_color": "#ef4444",
+      "title": "User 'ubuntu' switched to root (su)",
+      "description": "Direct root shell obtained via su. Occurrence #1.",
+      "source_ip": null,
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T06:01:30+00:00",
+      "event_count": 1,
+      "evidence": [
+        "Mar 15 06:01:30 server01 su: (to root) ubuntu on pts/0"
+      ],
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_id": "T1548"
+    },
+    {
+      "alert_id": "a2ca2134",
+      "detector": "Anomaly",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "Multiple user-agents from 45.142.212.100",
+      "description": "5 distinct user-agents from single IP \u2014 possible tool rotation or bot activity.",
+      "source_ip": "45.142.212.100",
+      "user": null,
+      "timestamp": "2024-03-15T00:22:00+00:00",
+      "event_count": 5,
+      "evidence": [
+        "Mozilla/5.0 (compatible; Googlebot/2.1)",
+        "nmap scripting engine",
+        "sqlmap/1.7",
+        "Nikto/2.1.6",
+        "python-requests/2.28.0"
+      ],
+      "mitre_tactic": "Defense Evasion",
+      "mitre_id": "T1036"
+    },
+    {
+      "alert_id": "55fa4b0e",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "Web login brute force from 77.83.247.10",
+      "description": "10 failed POST requests in 5 min.",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:47:34+00:00",
+      "event_count": 10,
+      "evidence": [
+        "/login",
+        "/login",
+        "/login",
+        "/login",
+        "/login"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "25ee9a3e",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "Web login brute force from 77.83.247.10",
+      "description": "20 failed POST requests in 5 min.",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:48:34+00:00",
+      "event_count": 20,
+      "evidence": [
+        "/login",
+        "/login",
+        "/login",
+        "/login",
+        "/login"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "2f1dba08",
+      "detector": "Anomaly",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "High error rate from 77.83.247.10",
+      "description": "100% of requests from 77.83.247.10 returned errors (20/20).",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:48:34+00:00",
+      "event_count": 20,
+      "evidence": [],
+      "mitre_tactic": "Discovery",
+      "mitre_id": "T1595"
+    },
+    {
+      "alert_id": "d54135de",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "Web login brute force from 77.83.247.10",
+      "description": "30 failed POST requests in 5 min.",
+      "source_ip": "77.83.247.10",
+      "user": null,
+      "timestamp": "2024-03-15T02:49:34+00:00",
+      "event_count": 30,
+      "evidence": [
+        "/login",
+        "/login",
+        "/login",
+        "/login",
+        "/login"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "f33089eb",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "5 failed auth attempts in 5 min targeting 4 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:00:20+00:00",
+      "event_count": 5,
+      "evidence": [
+        "root",
+        "ubuntu",
+        "ubuntu",
+        "pi",
+        "deploy"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "26d973a5",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 10.0.0.55",
+      "description": "5 failed auth attempts in 5 min targeting 1 user(s).",
+      "source_ip": "10.0.0.55",
+      "user": "root",
+      "timestamp": "2026-03-15T00:00:42+00:00",
+      "event_count": 5,
+      "evidence": [
+        "root",
+        "root",
+        "root",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "20271ae9",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "10 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:00:45+00:00",
+      "event_count": 10,
+      "evidence": [
+        "admin",
+        "deploy",
+        "deploy",
+        "pi",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "53070f67",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 192.168.1.100",
+      "description": "15 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "192.168.1.100",
+      "user": null,
+      "timestamp": "2026-03-15T00:01:10+00:00",
+      "event_count": 15,
+      "evidence": [
+        "ubuntu",
+        "pi",
+        "pi",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "4c7af9ad",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 10.0.0.55",
+      "description": "10 failed auth attempts in 5 min targeting 1 user(s).",
+      "source_ip": "10.0.0.55",
+      "user": "root",
+      "timestamp": "2026-03-15T00:01:22+00:00",
+      "event_count": 10,
+      "evidence": [
+        "root",
+        "root",
+        "root",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "0ad3d4dc",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 10.0.0.55",
+      "description": "15 failed auth attempts in 5 min targeting 1 user(s).",
+      "source_ip": "10.0.0.55",
+      "user": "root",
+      "timestamp": "2026-03-15T00:02:02+00:00",
+      "event_count": 15,
+      "evidence": [
+        "root",
+        "root",
+        "root",
+        "root",
+        "root"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "7faa0a4c",
+      "detector": "BruteForce",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "SSH brute force from 185.220.101.5",
+      "description": "5 failed auth attempts in 5 min targeting 5 user(s).",
+      "source_ip": "185.220.101.5",
+      "user": null,
+      "timestamp": "2026-03-15T02:02:00+00:00",
+      "event_count": 5,
+      "evidence": [
+        "alice",
+        "bob",
+        "charlie",
+        "diana",
+        "eve"
+      ],
+      "mitre_tactic": "Credential Access",
+      "mitre_id": "T1110.001"
+    },
+    {
+      "alert_id": "f22d7b35",
+      "detector": "PrivEsc",
+      "severity": "MEDIUM",
+      "hex_color": "#f59e0b",
+      "title": "High sudo frequency for 'ubuntu'",
+      "description": "'ubuntu' has run 10 sudo-as-root commands.",
+      "source_ip": null,
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T08:06:00+00:00",
+      "event_count": 10,
+      "evidence": [
+        "/bin/ls /root",
+        "/bin/ls /root",
+        "/bin/ls /root",
+        "/bin/ls /root",
+        "/bin/ls /root"
+      ],
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_id": "T1548.003"
+    },
+    {
+      "alert_id": "318be115",
+      "detector": "Anomaly",
+      "severity": "LOW",
+      "hex_color": "#3b82f6",
+      "title": "Off-hours login by 'ubuntu'",
+      "description": "Successful login at 03:00 (outside 07:00\u201320:00).",
+      "source_ip": "203.0.113.42",
+      "user": "ubuntu",
+      "timestamp": "2026-03-15T03:00:00+00:00",
+      "event_count": 1,
+      "evidence": [
+        "Mar 15 03:00:00 server01 sshd[1234]: Accepted password for ubuntu from 203.0.113.42 port 51234 ssh2"
+      ],
+      "mitre_tactic": "Initial Access",
+      "mitre_id": "T1078"
+    }
+  ]
+}

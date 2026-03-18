@@ -1,0 +1,119 @@
+Mar 15 00:00:00 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40000 ssh2
+Mar 15 00:00:05 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40001 ssh2
+Mar 15 00:00:10 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40002 ssh2
+Mar 15 00:00:10 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50000 ssh2
+Mar 15 00:00:15 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40003 ssh2
+Mar 15 00:00:18 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50001 ssh2
+Mar 15 00:00:20 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40004 ssh2
+Mar 15 00:00:25 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40005 ssh2
+Mar 15 00:00:26 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50002 ssh2
+Mar 15 00:00:30 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40006 ssh2
+Mar 15 00:00:34 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50003 ssh2
+Mar 15 00:00:35 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40007 ssh2
+Mar 15 00:00:40 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40008 ssh2
+Mar 15 00:00:42 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50004 ssh2
+Mar 15 00:00:45 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40009 ssh2
+Mar 15 00:00:50 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40010 ssh2
+Mar 15 00:00:50 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50005 ssh2
+Mar 15 00:00:55 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40011 ssh2
+Mar 15 00:00:58 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50006 ssh2
+Mar 15 00:01:00 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40012 ssh2
+Mar 15 00:01:05 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40013 ssh2
+Mar 15 00:01:06 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50007 ssh2
+Mar 15 00:01:10 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40014 ssh2
+Mar 15 00:01:14 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50008 ssh2
+Mar 15 00:01:15 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40015 ssh2
+Mar 15 00:01:20 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40016 ssh2
+Mar 15 00:01:22 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50009 ssh2
+Mar 15 00:01:25 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40017 ssh2
+Mar 15 00:01:30 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40018 ssh2
+Mar 15 00:01:30 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50010 ssh2
+Mar 15 00:01:35 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40019 ssh2
+Mar 15 00:01:38 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50011 ssh2
+Mar 15 00:01:40 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40020 ssh2
+Mar 15 00:01:45 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40021 ssh2
+Mar 15 00:01:46 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50012 ssh2
+Mar 15 00:01:50 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40022 ssh2
+Mar 15 00:01:54 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50013 ssh2
+Mar 15 00:01:55 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40023 ssh2
+Mar 15 00:02:00 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40024 ssh2
+Mar 15 00:02:02 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50014 ssh2
+Mar 15 00:02:05 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40025 ssh2
+Mar 15 00:02:10 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40026 ssh2
+Mar 15 00:02:10 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50015 ssh2
+Mar 15 00:02:15 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40027 ssh2
+Mar 15 00:02:18 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50016 ssh2
+Mar 15 00:02:20 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40028 ssh2
+Mar 15 00:02:25 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40029 ssh2
+Mar 15 00:02:26 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50017 ssh2
+Mar 15 00:02:30 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40030 ssh2
+Mar 15 00:02:34 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50018 ssh2
+Mar 15 00:02:35 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40031 ssh2
+Mar 15 00:02:40 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40032 ssh2
+Mar 15 00:02:42 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50019 ssh2
+Mar 15 00:02:45 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40033 ssh2
+Mar 15 00:02:50 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40034 ssh2
+Mar 15 00:02:50 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50020 ssh2
+Mar 15 00:02:55 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40035 ssh2
+Mar 15 00:02:58 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50021 ssh2
+Mar 15 00:03:00 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40036 ssh2
+Mar 15 00:03:05 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40037 ssh2
+Mar 15 00:03:06 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50022 ssh2
+Mar 15 00:03:10 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40038 ssh2
+Mar 15 00:03:14 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50023 ssh2
+Mar 15 00:03:15 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40039 ssh2
+Mar 15 00:03:20 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40040 ssh2
+Mar 15 00:03:22 server01 sshd[1234]: Failed password for root from 10.0.0.55 port 50024 ssh2
+Mar 15 00:03:25 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40041 ssh2
+Mar 15 00:03:30 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40042 ssh2
+Mar 15 00:03:35 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40043 ssh2
+Mar 15 00:03:40 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40044 ssh2
+Mar 15 00:03:45 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40045 ssh2
+Mar 15 00:03:50 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40046 ssh2
+Mar 15 00:03:55 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40047 ssh2
+Mar 15 00:04:00 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40048 ssh2
+Mar 15 00:04:05 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40049 ssh2
+Mar 15 00:04:10 server01 sshd[1234]: Failed password for admin from 192.168.1.100 port 40050 ssh2
+Mar 15 00:04:15 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40051 ssh2
+Mar 15 00:04:20 server01 sshd[1234]: Failed password for root from 192.168.1.100 port 40052 ssh2
+Mar 15 00:04:25 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40053 ssh2
+Mar 15 00:04:30 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40054 ssh2
+Mar 15 00:04:35 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40055 ssh2
+Mar 15 00:04:40 server01 sshd[1234]: Failed password for ubuntu from 192.168.1.100 port 40056 ssh2
+Mar 15 00:04:45 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40057 ssh2
+Mar 15 00:04:50 server01 sshd[1234]: Failed password for deploy from 192.168.1.100 port 40058 ssh2
+Mar 15 00:04:55 server01 sshd[1234]: Failed password for pi from 192.168.1.100 port 40059 ssh2
+Mar 15 02:00:00 server01 sshd[1234]: Failed password for invalid user alice from 185.220.101.5 port 60000 ssh2
+Mar 15 02:00:30 server01 sshd[1234]: Failed password for invalid user bob from 185.220.101.5 port 60001 ssh2
+Mar 15 02:01:00 server01 sshd[1234]: Failed password for invalid user charlie from 185.220.101.5 port 60002 ssh2
+Mar 15 02:01:30 server01 sshd[1234]: Failed password for invalid user diana from 185.220.101.5 port 60003 ssh2
+Mar 15 02:02:00 server01 sshd[1234]: Failed password for invalid user eve from 185.220.101.5 port 60004 ssh2
+Mar 15 02:02:30 server01 sshd[1234]: Failed password for invalid user frank from 185.220.101.5 port 60005 ssh2
+Mar 15 02:03:00 server01 sshd[1234]: Failed password for invalid user grace from 185.220.101.5 port 60006 ssh2
+Mar 15 02:03:30 server01 sshd[1234]: Failed password for invalid user hank from 185.220.101.5 port 60007 ssh2
+Mar 15 03:00:00 server01 sshd[1234]: Accepted password for ubuntu from 203.0.113.42 port 51234 ssh2
+Mar 15 06:00:00 server01 sshd[1234]: Accepted password for ubuntu from 198.51.100.9 port 59999 ssh2
+Mar 15 06:00:30 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/bash
+Mar 15 06:00:45 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/etc/shadow
+Mar 15 06:01:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/nmap -sV 10.0.0.0/8
+Mar 15 06:01:30 server01 su: (to root) ubuntu on pts/0
+Mar 15 08:00:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:01:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:02:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:03:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:04:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:05:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:06:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:07:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:08:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:09:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:10:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 08:11:00 server01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/bin/ls /root
+Mar 15 09:00:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44000 ssh2
+Mar 15 09:30:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44001 ssh2
+Mar 15 10:00:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44002 ssh2
+Mar 15 10:30:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44003 ssh2
+Mar 15 11:00:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44004 ssh2
+Mar 15 11:30:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44005 ssh2
+Mar 15 12:00:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44006 ssh2
+Mar 15 12:30:00 server01 sshd[1234]: Accepted password for alice from 10.10.1.50 port 44007 ssh2
