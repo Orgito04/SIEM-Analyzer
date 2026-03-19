@@ -3,10 +3,8 @@
 SIEM Web Dashboard — Flask app
 Provides a real-time web UI for uploading logs and viewing results.
 """
-
 import os
 import sys
-import json
 import threading
 from pathlib import Path
 from datetime import datetime

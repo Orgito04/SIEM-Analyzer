@@ -1,0 +1,328 @@
+{
+  "scanner_version": "2.0",
+  "target": "https://fikso.al/",
+  "ip": "188.114.97.0",
+  "timestamp": "2026-03-19T20:06:13.533723",
+  "duration_s": 113.76,
+  "ports": [
+    {
+      "port": 500,
+      "service": "isakmp",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 53,
+      "service": "domain",
+      "version": "Unknown",
+      "risk": "MEDIUM",
+      "risk_reason": "DNS \u2013 zone transfer / amplification",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 2483,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 25,
+      "service": "smtp",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "SMTP \u2013 open relay / user enum risk",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 23,
+      "service": "telnet",
+      "version": "Unknown",
+      "risk": "CRITICAL",
+      "risk_reason": "Telnet \u2013 plaintext credentials",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 587,
+      "service": "submission",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 67,
+      "service": "bootps",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 995,
+      "service": "pop3s",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 21,
+      "service": "ftp",
+      "version": "Unknown",
+      "risk": "CRITICAL",
+      "risk_reason": "FTP \u2013 plaintext, often allows anon login",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 22,
+      "service": "ssh",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "SSH \u2013 secure if patched; watch old versions",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 4899,
+      "service": "radmin-port",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 7002,
+      "service": "afs3-prserver",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 9001,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 8091,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 69,
+      "service": "tftp",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 79,
+      "service": "finger",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "Finger \u2013 user enumeration",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 80,
+      "service": "http",
+      "version": "Unknown",
+      "risk": "MEDIUM",
+      "risk_reason": "HTTP \u2013 inspect for web vulns",
+      "banner": "HTTP/1.1 400 Bad Request\r\nDate: Thu, 19 Mar 2026 13:05:13 GMT\r\nContent-Length: 68\r\nConnection: close\r\nCache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0\r\nReferrer-Policy: same-origin\r\nExpires: Thu, 01 Jan 1970 00:00:01 GMT\r\nProxy-Status: Cloudflare-Proxy;error=http_request_error\r\nCF-RAY: 9decaff89d1efe9a-AMS",
+      "cve_hints": []
+    },
+    {
+      "port": 110,
+      "service": "pop3",
+      "version": "Unknown",
+      "risk": "MEDIUM",
+      "risk_reason": "POP3 \u2013 plaintext mail retrieval",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 111,
+      "service": "sunrpc",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "RPC portmapper \u2013 attack surface",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 135,
+      "service": "epmap",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "MS-RPC \u2013 lateral movement vector",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 990,
+      "service": "ftps",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 1521,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "Oracle DB \u2013 default creds common",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 3306,
+      "service": "mysql",
+      "version": "Unknown",
+      "risk": "HIGH",
+      "risk_reason": "MySQL \u2013 check for remote root",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 5800,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 7070,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 7443,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    },
+    {
+      "port": 9080,
+      "service": "unknown",
+      "version": "Unknown",
+      "risk": "LOW",
+      "risk_reason": "No specific risk profile",
+      "banner": "",
+      "cve_hints": []
+    }
+  ],
+  "web": {
+    "XSS": {
+      "vulnerable": false,
+      "payload": "<script>alert('XSS')</script>",
+      "url_tested": "https://fikso.al/?q=%3Cscript%3Ealert%28%27XSS%27%29%3C/script%3E"
+    },
+    "SQL Injection": {
+      "vulnerable": false,
+      "payload": "",
+      "error_matched": ""
+    },
+    "LFI": {
+      "vulnerable": false,
+      "payload": ""
+    },
+    "Open Redirect": {
+      "vulnerable": false,
+      "payload": "https://evil.example.com"
+    },
+    "CORS": {
+      "misconfigured": false,
+      "acao": ""
+    },
+    "Security Headers": {
+      "Strict-Transport-Security": "HSTS missing \u2013 susceptible to downgrade",
+      "Content-Security-Policy": "CSP missing \u2013 XSS risk increased",
+      "X-Content-Type-Options": "MIME sniffing not prevented",
+      "X-Frame-Options": "Clickjacking protection absent",
+      "Referrer-Policy": "Referrer leakage possible",
+      "Server header": "Discloses: cloudflare"
+    },
+    "Directories": {
+      "/admin": 301,
+      "/panel": 301,
+      "/cpanel": 301,
+      "/db": 301,
+      "/config.php": 403,
+      "/.env": 403,
+      "/.git/config": 403,
+      "/wp-admin": 301,
+      "/wp-config.php": 403,
+      "/api/v2": 301,
+      "/actuator/health": 301,
+      "/actuator/env": 301,
+      "/robots.txt": 200,
+      "/sitemap.xml": 301,
+      "/.htaccess": 403,
+      "/test": 301,
+      "/temp": 301
+    }
+  },
+  "tls": {},
+  "dns": {
+    "hostname": "fikso.al",
+    "records": {
+      "A": [
+        "188.114.96.0",
+        "188.114.97.0"
+      ],
+      "AAAA": [
+        "2a06:98c1:3121::",
+        "2a06:98c1:3120::"
+      ],
+      "MX": [
+        "0 mail.fikso.al."
+      ],
+      "NS": [
+        "max.ns.cloudflare.com.",
+        "iris.ns.cloudflare.com."
+      ],
+      "TXT": [
+        "\"v=spf1 mx -all\""
+      ]
+    },
+    "zone_transfer": []
+  }
+}
